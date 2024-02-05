@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -45,9 +46,18 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/',[DashboardController::class,'index']);
     Route::resource('products',ProductsController::class)->middleware('auth.admin.product');
 });
-Route::get('/', function () {
-    return '<h1> Trang chủ uniocde</h1>';
-})->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('sanpham/{id}',[HomeController::class,'getProductDetail']);
+// Route::get('/', function () {
+//     $title="Học lập trình";
+//     $content="Tại Unicode";
+//     $dataView=[
+//         'titleData'=>$title,
+//         'contentData'=>$content
+//     ];
+//     return view('home',$dataView);
+
+// })->name('home');
 
 // Route::get('/',function(){
 //     $html='<h1>Học lập trình tại Unicode</h1>';
