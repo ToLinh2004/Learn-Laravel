@@ -8,8 +8,8 @@ class CategoriesController extends Controller
 {
     // hiển thị danh sách chuyên mục phwuong thức get
     public function __construct(){}  
-    public function index(){
-        return view('clients/categories/list');
+    public function index(Request $request){
+       dd($request);
     } 
     // lấy ra 1 chuyên mục theo id 
     public function getCategory($id){
