@@ -34,7 +34,8 @@ Route::prefix('categories')->group(function(){
  Route::post('/add',[CategoriesController::class,'handleAddCategory']);
  // xóa chuyên mục
  Route::get('/delete/{id}',[CategoriesController::class,'deleteCategory'])->name('categories.delete');
-
+ Route::get('/upload',[CategoriesController::class,'getFile']);
+Route::post('/upload',[CategoriesController::class,'handleFile'])->name('categories.upload');
 });
 
 Route::prefix('admin')->group(function(){
