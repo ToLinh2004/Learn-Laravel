@@ -21,16 +21,43 @@ class CategoriesController extends Controller
 
     }
     // show form thêm dữ liệu phương thức get
-    public function addCategory(){
-        return view('clients/categories/add');
+    public function addCategory(Request $request){
+        $cateName=$request->old('category_name','Mặc định');
+        return view('clients/categories/add',compact('cateName'));
     }
     // thêm dữ liệu vào chuyên mục phương thức POST
-    public function handleAddCategory(){
-        return 'Submit theo chuyên mục';
+    public function handleAddCategory(Request $request){
+        if($request->has('category_name')){
+                $cateName=$request->category_name;
+            $request->flash();
+            return redirect(route('categories.add'));
+        }
+        
+        else{
+            return   " ko có category name";
+        }
+
+        // return 'Submit theo chuyên mục';
     }
     // xóa dữ liệu phương thức delete
     public function deleteCategory(){
         return 'Xóa sản phẩm';
+    }
+    // xử lý lấy thông tin file
+    public function handleFile(Request $request){
+        if($request->hasFile('phpoto')){
+            if($request ->photo->isValid()){
+                $file=$request->photo;
+                dd($file);
+            }
+            else{
+                return "upload ko thành công";
+            }
+        }
+        
+    }
+    public function getFile(){
+        return view('clients/categories/file');
     }
 }
 
