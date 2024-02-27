@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HoomeController;
 
 
 /*
@@ -21,34 +22,33 @@ use App\Http\Controllers\HomeController;
 */
 
 // client 
-Route::prefix('categories')->group(function(){
-    // danh sách chuyên mục
-    Route::get('/',[CategoriesController::class,'index'])->name('categories.list');
-    // lấy chi tiết 1 chuyên mục áp dụng show form sửa chuyên mục
-    Route::get('/edit/{id}',[CategoriesController::class,'getCategory'])->name('categories.edit');
-    // xử lý update chuyên mục
-    Route::post('edit/{id}',[CategoriesController::class,'updateCategory']);
- // hiển thị form add dữ liệu
- Route::get('/add',[CategoriesController::class,'addCategory'])->name('categories.add');
- // xử lý thêm chuyên mục
- Route::post('/add',[CategoriesController::class,'handleAddCategory']);
- // xóa chuyên mục
- Route::get('/delete/{id}',[CategoriesController::class,'deleteCategory'])->name('categories.delete');
- Route::get('/upload',[CategoriesController::class,'getFile']);
-Route::post('/upload',[CategoriesController::class,'handleFile'])->name('categories.upload');
-});
+// Route::prefix('categories')->group(function(){
+//     // danh sách chuyên mục
+//     Route::get('/',[CategoriesController::class,'index'])->name('categories.list');
+//     // lấy chi tiết 1 chuyên mục áp dụng show form sửa chuyên mục
+//     Route::get('/edit/{id}',[CategoriesController::class,'getCategory'])->name('categories.edit');
+//     // xử lý update chuyên mục
+//     Route::post('edit/{id}',[CategoriesController::class,'updateCategory']);
+//  // hiển thị form add dữ liệu
+//  Route::get('/add',[CategoriesController::class,'addCategory'])->name('categories.add');
+//  // xử lý thêm chuyên mục
+//  Route::post('/add',[CategoriesController::class,'handleAddCategory']);
+//  // xóa chuyên mục
+//  Route::get('/delete/{id}',[CategoriesController::class,'deleteCategory'])->name('categories.delete');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/',[DashboardController::class,'index']);
-    Route::resource('products',ProductsController::class);
-});
+// });
 
-Route::middleware('auth.admin')->prefix('admin')->group(function(){
-    Route::get('/',[DashboardController::class,'index']);
-    Route::resource('products',ProductsController::class)->middleware('auth.admin.product');
-});
-Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('sanpham/{id}',[HomeController::class,'getProductDetail']);
+// Route::prefix('admin')->group(function(){
+//     Route::get('/',[DashboardController::class,'index']);
+//     Route::resource('products',ProductsController::class);
+// });
+
+// Route::middleware('auth.admin')->prefix('admin')->group(function(){
+//     Route::get('/',[DashboardController::class,'index']);
+//     Route::resource('products',ProductsController::class)->middleware('auth.admin.product');
+// });
+// Route::get('/',[HomeController::class,'index'])->name('home');
+// Route::get('sanpham/{id}',[HomeController::class,'getProductDetail']);
 // Route::get('/', function () {
 //     $title="Học lập trình";
 //     $content="Tại Unicode";
@@ -131,3 +131,5 @@ Route::get('sanpham/{id}',[HomeController::class,'getProductDetail']);
 //         });
 //     });
 // });
+
+Route::get('/',[HoomeController::class,'index']);
