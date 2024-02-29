@@ -19,6 +19,7 @@ class HoomeController extends Controller
             'Item 2',
             'Item 3',
         ];
+        $this->data['message']='Đặt hàng thnahf công';
         $this->data['dataArr']=[];
         $this->data['number']=20;
                 return view('home',$this->data);

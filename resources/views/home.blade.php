@@ -5,7 +5,7 @@
 <div class="container">
     {!!$content!!};
 </div>
-<!-- @for($i =1; $i<=10; $i++)
+{{-- <!-- @for($i =1; $i<=10; $i++)
 <p>Phần tử thứ {{$i}}</p>
 @endfor -->
 <!-- @while($index<=10)
@@ -29,11 +29,11 @@
 <p>Số âm</p>
 @elseif($number>=0  && $number<5)
 <p>đây là giá trị bằng 5</p>
-@else
+@else --}}
 <p>Đây là giá trị nhỏ hơn 10</p>
-@endif;  -->
+{{-- @endif;  -->
 
-@switch($number)
+<!-- @switch($number)
 @case(1)
 <p>Số thứ nhất</p>
 @break
@@ -42,4 +42,13 @@
 @break
 @default
 <p>Số còn lại</p>
-@endswitch
+@endswitch --> --}}
+
+{{-- <!-- @php $number=10;
+$total=$number +20
+@endphp
+<h3>Kết quả : {{$number}}--{{$total}}</h3> --> --}}
+
+{{-- @for($index=0;$index<10;$index++) 
+<p>Phần tử: {{$index}}</p>
+@endfor --}}
