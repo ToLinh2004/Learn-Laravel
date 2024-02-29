@@ -59,5 +59,6 @@ class CategoriesController extends Controller
     public function getFile(){
         return view('clients/categories/file');
     }
+    
 }
 
