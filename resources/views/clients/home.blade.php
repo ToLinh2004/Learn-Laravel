@@ -1,10 +1,10 @@
-<h1>Trang chủ Unicode </h1>
+{{-- <h1>Trang chủ Unicode </h1>
 <h2>{{$welcome}}</h2>
 <h2>{{!empty(request()->keyword)?request()->keyword:"khoong có gì"}}</h2>
 
 <div class="container">
     {!!$content!!};
-</div>
+</div> --}}
 {{-- <!-- @for($i =1; $i<=10; $i++)
 <p>Phần tử thứ {{$i}}</p>
 @endfor -->
@@ -52,3 +52,28 @@ $total=$number +20
 {{-- @for($index=0;$index<10;$index++) 
 <p>Phần tử: {{$index}}</p>
 @endfor --}}
+
+@extends('layouts.client');
+@section('content')
+<h1>TRANG CHỦ</h1>
+@endsection
+
+@section('sidebar')
+@parent
+<h3>Home Siderbar</h3>
+@endsection
+
+@section('css')
+header{
+    background:blue;
+    color:afff;
+}
+@endsection
+
+@section('js')
+header{
+    document.querySelector('.show').onclick=function(){
+        alert{'Thành công'}
+;    }
+}
+@section
