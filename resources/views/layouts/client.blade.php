@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang web của tôi</title>
-    <style type="text/css">
-    @yied('css')
+    <title>@yield('title')</title>
+    <style type=text/css>
+    @yield('css')
+
     </style>
 </head>
 <body>
@@ -16,8 +17,8 @@
     <main>
         <aside>
             @section('sidebar')
-           @include('clients.blocks.sidebar')
-           @show
+            @include('clients.blocks.sidebar')
+            @show
         </aside>
         <div class="content">
             @yield('content')
@@ -27,7 +28,7 @@
         <h1>FOOTER</h1>
     </footer>
     <script type=text/javascript>
-        @yied('js')
-        </script>
+        @yield('js')
+ </script>
 </body>
 </html>

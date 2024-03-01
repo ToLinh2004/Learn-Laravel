@@ -53,27 +53,31 @@ $total=$number +20
 <p>Phần tử: {{$index}}</p>
 @endfor --}}
 
-@extends('layouts.client');
-@section('content')
-<h1>TRANG CHỦ</h1>
+@extends('layouts.client')
+@section('title')
+    {{$title}}
 @endsection
-
 @section('sidebar')
 @parent
-<h3>Home Siderbar</h3>
+{{-- ko thay thế section  --}}
+<h1>Home Sidebar</h1>
 @endsection
-
+@section('content')
+    <h1>TRANG CHỦ</h1>
+    <button type="button" class="show">Show</button>
+@endsection
 @section('css')
 header{
-    background:blue;
-    color:afff;
+    background: blue;
+    color: #fff;
 }
 @endsection
 
 @section('js')
-header{
-    document.querySelector('.show').onclick=function(){
-        alert{'Thành công'}
-;    }
+<script>
+document.querySelector('.show').onclick=function(){
+    alert('Thành công');
 }
-@section
+</script>
+
+@endsection
