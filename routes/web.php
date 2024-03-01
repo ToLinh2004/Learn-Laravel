@@ -133,6 +133,8 @@ use App\Http\Controllers\HoomeController;
 // });
 
 Route::get('/',[HoomeController::class,'index']);
+
+Route::get('/product',[HoomeController::class,'products']);
 Route::get('/categories/skincare',function(Request $request){
     return "Path" .$request->path();
 }
