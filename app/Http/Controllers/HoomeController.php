@@ -23,6 +23,7 @@ class HoomeController extends Controller
         // $this->data['dataArr']=[];
         // $this->data['number']=20;
         $this->data['title']='Trang chủ';
+        $this->data['message']='Đăng ký tài khoản thành công';
                 return view('clients.home',$this->data);
     }
     public function  products(){
