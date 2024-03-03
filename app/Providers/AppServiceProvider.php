@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Tự định nghĩa directive dạng thường
         Blade::directive('datetime', function ($expression) {
             $expression=trim($expression, '\'');
             $expression=trim($expression,'"');
@@ -31,6 +31,13 @@ class AppServiceProvider extends ServiceProvider
             if(!empty($dataObject)){
                 $dataFormat=$dataObject->format('d/m/Y H:i:s');
                 return $dataFormat;
+            }
+            return false;
+        });
+        // tự định nghĩa directive dạng rẽ nhánh
+        Blade::if('env', function ($value) {
+            if(config('app.env')===$value){
+                return true;
             }
             return false;
         });

@@ -67,6 +67,14 @@ $total=$number +20
 
         <h1>Trang chủ</h1>
         @datetime("2021-12-15 15:50:3")
+        @env('local')
+        <p>environment local</p>
+        @elseenv('tesst')
+        <p>environment test</p>
+      
+        @else
+        <p>environment </p>
+        @endenv
         @include('clients.contents.slide')
         @include('clients.contents.about')
 @endsection
