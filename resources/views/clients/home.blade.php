@@ -77,6 +77,11 @@ $total=$number +20
         @endenv
         @include('clients.contents.slide')
         @include('clients.contents.about')
+        
+        <x-package-alert type="dark" :content="$message" data-icon="facebook"/>
+        {{-- <x-button/>
+        <x-inputs.Button/>
+        <x-forms.Button/> --}}
 @endsection
 @section('css')
 
