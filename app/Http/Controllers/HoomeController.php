@@ -27,6 +27,17 @@ class HoomeController extends Controller
     }
     public function  products(){
         $this->data['title']='Sản phâm';
-        return view('clients.home',$this->data);
+        return view('clients.products',$this->data);
+    }
+    public function getAdd(){
+        $this->data['title']='Thêm Sản phâm';
+        return view('clients.add',$this->data);
+    }
+
+    public function postAdd(Request $request){
+        dd($request);
+    }
+    public function putAdd(Request $request){
+        dd($request);
     }
 }

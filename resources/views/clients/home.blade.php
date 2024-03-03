@@ -30,7 +30,7 @@
 @elseif($number>=0  && $number<5)
 <p>đây là giá trị bằng 5</p>
 @else --}}
-<p>Đây là giá trị nhỏ hơn 10</p>
+{{-- <p>Đây là giá trị nhỏ hơn 10</p> --}}
 {{-- @endif;  -->
 
 <!-- @switch($number)
@@ -59,25 +59,26 @@ $total=$number +20
 @endsection
 @section('sidebar')
 @parent
-{{-- ko thay thế section  --}}
+
 <h1>Home Sidebar</h1>
 @endsection
+
 @section('content')
-    <h1>TRANG CHỦ</h1>
-    <button type="button" class="show">Show</button>
+
+        <h1>Trang chủ</h1>
+        @datetime("2021-12-15 15:50:3")
+        @include('clients.contents.slide')
+        @include('clients.contents.about')
 @endsection
 @section('css')
-header{
-    background: blue;
-    color: #fff;
-}
+
+
 @endsection
 
 @section('js')
 <script>
-document.querySelector('.show').onclick=function(){
-    alert('Thành công');
-}
+
 </script>
 
 @endsection
+
