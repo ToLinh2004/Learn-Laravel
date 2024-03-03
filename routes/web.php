@@ -132,10 +132,13 @@ use App\Http\Controllers\HoomeController;
 //     });
 // });
 
-Route::get('/',[HoomeController::class,'index']);
+Route::get('/',[HoomeController::class,'index'])->name('home');
 
-Route::get('/product',[HoomeController::class,'products']);
+Route::get('/product',[HoomeController::class,'products'])->name('product');
 Route::get('/categories/skincare',function(Request $request){
-    return "Path" .$request->path();
-}
-);
+    return "Path" .$request->path();});
+
+Route::get('them-sanpham',[HoomeController::class,'getAdd']);
+// Route::post('them-sanpham',[HoomeController::class,'postAdd']);
+Route::put('them-sanpham',[HoomeController::class,'putAdd']);
+
