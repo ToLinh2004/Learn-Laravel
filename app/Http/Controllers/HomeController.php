@@ -33,5 +33,13 @@ class HomeController extends Controller
 
         return view('clients.products.detail',compact('id'));
     }
+
+    public function  getArr(){
+        $contentArr=[
+            'name'=>'Uniccode',
+            'lesson'=>'HTTTP response'
+        ];
+        return $contentArr;
+    }
     
 }

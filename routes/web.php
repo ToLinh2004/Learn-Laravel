@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HoomeController;
-
+use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,3 +142,29 @@ Route::get('them-sanpham',[HoomeController::class,'getAdd']);
 // Route::post('them-sanpham',[HoomeController::class,'postAdd']);
 Route::put('them-sanpham',[HoomeController::class,'putAdd']);
 
+Route::get('test-response',function(){
+    return "<h3>Học laravel tại Unicode</h3>";
+});
+Route::get('/content-array',function(){
+    $contentArr=[
+        'name'=>'Uniccode',
+        'lesson'=>'HTTTP response'
+    ];
+    return $contentArr;
+});
+Route::get('/lay-mang',[HomeController::class,'getArr']);
+
+Route::get('demo-response',function(){
+    // $response=new Response('Học laravel',201);
+    // or $response=response('hoc lap trinh',404)
+    $content='<h2>Học lập trình tại Unicode </h2>';
+    $response=(new Response($content))->header('content-type','textblade');
+    return $response;
+});
+
+Route::get('view-response',function(){
+    // return view('clients.demo-test');
+    $data=['hoc','datta'];
+    $response= response()->view('clients.demo-test',compact('data'));
+    return $response;
+});
