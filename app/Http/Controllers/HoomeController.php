@@ -41,4 +41,15 @@ class HoomeController extends Controller
     public function putAdd(Request $request){
         dd($request);
     }
+    public function downloadImage(Request $request){
+        if(!empty($request->image)){
+            $image=trim($request->image);
+            $fileName= 'image_'.uniqid().'.jpg';
+            // dùng use để có có thể use image
+            return response()->streamDownload(function() use ($image){
+                $imageContent=file_get_contents($image);
+                echo $imageContent;
+            },$fileName);   
+        }
+    }
 }

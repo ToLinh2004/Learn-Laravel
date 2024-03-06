@@ -182,3 +182,9 @@ Route::post('demo-response',function(Request $request){
 //     'version'=>'Laravel 8'];
 //     return response()->json($contentArr,201)->header('Api-Key','1234');
 // });
+
+Route::get('download-file',function(){
+    return view('clients.downloadfile');
+});
+
+Route::get('download-image',[HoomeController::class,'downloadImage'])->name('download-image');
