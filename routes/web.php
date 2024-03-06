@@ -132,39 +132,53 @@ use Illuminate\Http\Response;
 //     });
 // });
 
-Route::get('/',[HoomeController::class,'index'])->name('home');
+// Route::get('/',[HoomeController::class,'index'])->name('home');
 
-Route::get('/product',[HoomeController::class,'products'])->name('product');
-Route::get('/categories/skincare',function(Request $request){
-    return "Path" .$request->path();});
+// Route::get('/product',[HoomeController::class,'products'])->name('product');
+// Route::get('/categories/skincare',function(Request $request){
+//     return "Path" .$request->path();});
 
-Route::get('them-sanpham',[HoomeController::class,'getAdd']);
-// Route::post('them-sanpham',[HoomeController::class,'postAdd']);
-Route::put('them-sanpham',[HoomeController::class,'putAdd']);
+// Route::get('them-sanpham',[HoomeController::class,'getAdd']);
+// // Route::post('them-sanpham',[HoomeController::class,'postAdd']);
+// Route::put('them-sanpham',[HoomeController::class,'putAdd']);
 
-Route::get('test-response',function(){
-    return "<h3>Học laravel tại Unicode</h3>";
-});
-Route::get('/content-array',function(){
-    $contentArr=[
-        'name'=>'Uniccode',
-        'lesson'=>'HTTTP response'
-    ];
-    return $contentArr;
-});
-Route::get('/lay-mang',[HomeController::class,'getArr']);
+// Route::get('test-response',function(){
+//     return "<h3>Học laravel tại Unicode</h3>";
+// });
+// Route::get('/content-array',function(){
+//     $contentArr=[
+//         'name'=>'Uniccode',
+//         'lesson'=>'HTTTP response'
+//     ];
+//     return $contentArr;
+// });
+// Route::get('/lay-mang',[HomeController::class,'getArr']);
 
+// Route::get('demo-response',function(){
+//     // $response=new Response('Học laravel',201);
+//     // or $response=response('hoc lap trinh',404)
+//     $content='<h2>Học lập trình tại Unicode </h2>';
+//     $response=(new Response($content))->header('content-type','textblade');
+//     return $response;
+// });
+
+// Route::get('view-response',function(){
+//     // return view('clients.demo-test');
+//     $data=['hoc','datta'];
+//     $response= response()->view('clients.demo-test',compact('data'));
+//     return $response;
+// });
 Route::get('demo-response',function(){
-    // $response=new Response('Học laravel',201);
-    // or $response=response('hoc lap trinh',404)
-    $content='<h2>Học lập trình tại Unicode </h2>';
-    $response=(new Response($content))->header('content-type','textblade');
-    return $response;
-});
+   return view('clients.demo-test');
+})->name('demo-response');
+Route::post('demo-response',function(Request $request){
+    if(!empty($request->username)){
+        return redirect()->route('demo-response');
+    }
 
-Route::get('view-response',function(){
-    // return view('clients.demo-test');
-    $data=['hoc','datta'];
-    $response= response()->view('clients.demo-test',compact('data'));
-    return $response;
 });
+// Route::get('demo-response2',function(){
+//     $contentArr=['name'=>'unicode',
+//     'version'=>'Laravel 8'];
+//     return response()->json($contentArr,201)->header('Api-Key','1234');
+// });
