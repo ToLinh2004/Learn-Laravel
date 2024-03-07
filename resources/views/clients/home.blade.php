@@ -64,7 +64,11 @@ $total=$number +20
 @endsection
 
 @section('content')
-
+        @if(session('msg'))
+        <div class="alert alert-{{session('type')}}">
+            {{session('msg')}}
+        </div>
+        @endif
         <h1>Trang chủ</h1>
         @datetime("2021-12-15 15:50:3")
         @env('local')
