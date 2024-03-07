@@ -30,14 +30,31 @@ class HoomeController extends Controller
         $this->data['title']='Sản phâm';
         return view('clients.products',$this->data);
     }
-    public function getAdd(){
+    public function getAdd(){   
         $this->data['title']='Thêm Sản phâm';
+        $this->data['errorMessage']= 'Vui lòng kiểm trả dữ liệu';
         return view('clients.add',$this->data);
     }
 
     public function postAdd(Request $request){
-        dd($request);
+        $rule=[
+            'product_name'=>  'required|min:6' ,
+            'product_price'=>'required|integer'
+        ];
+        // $message=[
+        //     'product_name.required'=>'Tên sản phẩm bắt buộc phải nhập',
+        //     'product_name.min'=>'Tên sản phẩm không được nhỏ hơn :min kí tự',
+        //     'product_price.required'=>'Giá sản phẩm bắt buộc phải nhập',
+        //     'product_price.integer'=>'Giá sản phẩm là số',
+        // ];
+        $message=[
+                'required'=>'Trường :attribute bắt buộc phải nhập ',
+                'min'=>'Trường :attribute không được nhỏ hơn :min ký tự',
+                'integer'=>'Trường :attribute phải là số'
+        ];
+        $request->validate($rule,$message);
     }
+
     public function putAdd(Request $request){
         dd($request);
     }

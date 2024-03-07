@@ -132,14 +132,15 @@ use Illuminate\Http\Response;
 //     });
 // });
 
-// Route::get('/',[HoomeController::class,'index'])->name('home');
+Route::get('/',[HoomeController::class,'index'])->name('home');
 
-// Route::get('/product',[HoomeController::class,'products'])->name('product');
-// Route::get('/categories/skincare',function(Request $request){
-//     return "Path" .$request->path();});
+Route::get('/product',[HoomeController::class,'products'])->name('product');
+Route::get('/categories/skincare',function(Request $request){
+    return "Path" .$request->path();});
 
-// Route::get('them-sanpham',[HoomeController::class,'getAdd']);
-// // Route::post('them-sanpham',[HoomeController::class,'postAdd']);
+Route::get('them-sanpham',[HoomeController::class,'getAdd']);
+
+Route::post('them-sanpham',[HoomeController::class,'postAdd']);
 // Route::put('them-sanpham',[HoomeController::class,'putAdd']);
 
 // Route::get('test-response',function(){
