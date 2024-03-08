@@ -140,7 +140,7 @@ Route::get('/categories/skincare',function(Request $request){
 
 Route::get('them-sanpham',[HoomeController::class,'getAdd']);
 
-Route::post('them-sanpham',[HoomeController::class,'postAdd']);
+Route::post('them-sanpham',[HoomeController::class,'postAdd'])->name('post-add');
 // Route::put('them-sanpham',[HoomeController::class,'putAdd']);
 
 // Route::get('test-response',function(){

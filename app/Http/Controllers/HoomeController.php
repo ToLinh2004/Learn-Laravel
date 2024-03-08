@@ -46,10 +46,8 @@ class HoomeController extends Controller
     public function postAdd(Request $request)
     {
         $rules = [
-            'product_name' =>  ['required', 'min:6', function ($attribute, $value, $fail) {
-                isUppercase($value,'Trường :attribute không hợp lệ',$fail);
-            }],
-            'product_price' => ['required', 'integer', new Uppercase],
+            'product_name' =>  ['required', 'min:6'],
+            'product_price' => ['required', 'integer'],
         ];
         //   $rules=[
         //     'product_name'=>  ['required','min:6', new Uppercase],
@@ -74,12 +72,14 @@ class HoomeController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages, $attributes);
-        if ($validator->fails()) {
-            $validator->errors()->add('msg', 'Vui lòng kiểm tra dữ liệu');
-        } else {
-            return redirect()->route('product')->with('msg', 'Validate product thành công');
-        }
-        return  back()->withErrors($validator);
+        $validator->validate();
+        return response()->json(['status'=>'success']);
+        // if ($validator->fails()) {
+        //     $validator->errors()->add('msg', 'Vui lòng kiểm tra dữ liệu');
+        // } else {
+        //     return redirect()->route('product')->with('msg', 'Validate product thành công');
+        // }
+        // return  back()->withErrors($validator);
 
 
 

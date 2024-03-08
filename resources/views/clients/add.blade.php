@@ -6,7 +6,7 @@
 @section('content')
 
         <h1>Thêm sản phẩm</h1>
-        <form action="" method="post">
+        <form action="{{route('post-add')}}" method="post" id='product-form'>
             @error('msg')
         <div class="alert alert-danger text-center">
             {{$message}}
@@ -37,7 +37,35 @@
 
 @section('js')
 <script>
+    $(document).ready(function(){
+       $('#product-form').on('submit',function(e){
+        e.preventDefault();
+        let productName=$('input[name="product_name"]').val().trim();
+        let productPrice=$('input[name="product_price"]').val().trim();
+        let actionUrrl= $(this).attr('action');
+        let csrfToken=$(this).find('input[name="_token"]').val();
 
+
+        $.ajax({
+            url: actionUrrl,
+            type:'POST',
+            data:{
+                product_name: productName,
+                product_price: productPrice,
+                _token: csrfToken
+
+            },
+            dataType:'json',
+            success: function(response){
+
+            },
+            error: function(error){
+                let responseJSON= error.responseJSON.errors;
+                console.log(responseJSON)
+            }
+        })
+       })
+    });
 </script>
 
 @endsection
