@@ -11,6 +11,9 @@
 @section('content')
 
         <h1>Sản phẩm</h1>
+        @if(session('msg'))
+        <div class="alert alert-success">{{session('msg')}}</div>
+        @endif
 @push('scripts')
 <script>
     console.log('lân 2')

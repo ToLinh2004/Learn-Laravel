@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Validator;
+ 
 class HoomeController extends Controller
 {
     //
@@ -36,24 +38,40 @@ class HoomeController extends Controller
         return view('clients.add',$this->data);
     }
 
-    public function postAdd(ProductRequest $request){
+    public function postAdd(Request $request){
+          $rules=[
+            'product_name'=>  'required|min:6' ,
+            'product_price'=>'required|integer'
+        ];
 
-        dd($request->all());
-        // $rule=[
-        //     'product_name'=>  'required|min:6' ,
-        //     'product_price'=>'required|integer'
-        // ];
-        // $message=[
+        // $messages=[
         //     'product_name.required'=>'Tên sản phẩm bắt buộc phải nhập',
         //     'product_name.min'=>'Tên sản phẩm không được nhỏ hơn :min kí tự',
         //     'product_price.required'=>'Giá sản phẩm bắt buộc phải nhập',
         //     'product_price.integer'=>'Giá sản phẩm là số',
         // ];
-        // $message=[
-        //         'required'=>'Trường :attribute bắt buộc phải nhập ',
-        //         'min'=>'Trường :attribute không được nhỏ hơn :min ký tự',
-        //         'integer'=>'Trường :attribute phải là số'
-        // ];
+                $messages=[
+            'required'=>'Trường :attribute bắt buộc phải nhập ',
+            'min'=>'Trường :attribute không được nhỏ hơn :min ký tự',
+            'integer'=>'Trường :attribute phải là số'
+    ];
+        $attributes=[
+            'product_name'=>'Tên giá sản phẩm ',
+            'product_price'=>"Giá sản phẩm"
+        ];
+
+        $validator=Validator::make($request->all(),$rules,$messages,$attributes);
+        if($validator->fails()){
+           $validator->errors()->add('msg','Vui lòng kiểm tra dữ liệu');
+        }
+        else{
+            return redirect()->route('product')->with('msg','Validate product thành công');
+        }
+        return  back()->withErrors($validator);
+       
+
+
+     
         // $request->validate($rule,$message);
     }
 
