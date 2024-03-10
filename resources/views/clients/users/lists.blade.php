@@ -5,6 +5,7 @@
 @section('content')
 
     <h1>{{ $title }}</h1>
+    <a href="{{route('users.add')}}" class="btn btn-primary">Thêm người dùng</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -15,8 +16,8 @@
             </tr>
         </thead>
         <tbody>
-            @if (!empty($users))
-                @foreach ($users as $index => $item)
+            @if (!empty($usersList))
+                @foreach ($usersList as $index => $item)
                     <tr>
                         <td>
                             {{ $index + 1 }}
