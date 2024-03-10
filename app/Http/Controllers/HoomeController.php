@@ -7,6 +7,8 @@ use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Validator;
 
 use App\Rules\Uppercase;
+use Illuminate\Support\Facades\DB;
+
 
 class HoomeController extends Controller
 {
@@ -29,7 +31,11 @@ class HoomeController extends Controller
         // $this->data['number']=20;
         $this->data['title'] = 'Trang chủ';
         $this->data['message'] = 'Đăng ký tài khoản thành công';
+        // $users= DB::select('SELECT * FROM users where id= ?',[1]);
+        // $users= DB::select('SELECT * FROM users where email=:email',['email'=>'hoangan.web@gmail.com']);
+        // dd($users);
         return view('clients.home', $this->data);
+        
     }
     public function  products()
     {
