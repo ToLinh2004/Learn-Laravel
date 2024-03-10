@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HoomeController;
 use Illuminate\Http\Response;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,15 +133,16 @@ use Illuminate\Http\Response;
 //     });
 // });
 
-Route::get('/',[HoomeController::class,'index'])->name('home');
+Route::get('/', [HoomeController::class, 'index'])->name('home');
 
-Route::get('/product',[HoomeController::class,'products'])->name('product');
-Route::get('/categories/skincare',function(Request $request){
-    return "Path" .$request->path();});
+Route::get('/product', [HoomeController::class, 'products'])->name('product');
+Route::get('/categories/skincare', function (Request $request) {
+    return "Path" . $request->path();
+});
 
-Route::get('them-sanpham',[HoomeController::class,'getAdd']);
+Route::get('them-sanpham', [HoomeController::class, 'getAdd']);
 
-Route::post('them-sanpham',[HoomeController::class,'postAdd'])->name('post-add');
+Route::post('them-sanpham', [HoomeController::class, 'postAdd'])->name('post-add');
 // Route::put('them-sanpham',[HoomeController::class,'putAdd']);
 
 // Route::get('test-response',function(){
@@ -169,14 +171,13 @@ Route::post('them-sanpham',[HoomeController::class,'postAdd'])->name('post-add')
 //     $response= response()->view('clients.demo-test',compact('data'));
 //     return $response;
 // });
-Route::get('demo-response',function(){
-   return view('clients.demo-test');
+Route::get('demo-response', function () {
+    return view('clients.demo-test');
 })->name('demo-response');
-Route::post('demo-response',function(Request $request){
-    if(!empty($request->username)){
+Route::post('demo-response', function (Request $request) {
+    if (!empty($request->username)) {
         return redirect()->route('demo-response');
     }
-
 });
 // Route::get('demo-response2',function(){
 //     $contentArr=['name'=>'unicode',
@@ -184,8 +185,13 @@ Route::post('demo-response',function(Request $request){
 //     return response()->json($contentArr,201)->header('Api-Key','1234');
 // });
 
-Route::get('download-file',function(){
+Route::get('download-file', function () {
     return view('clients.downloadfile');
 });
 
-Route::get('download-image',[HoomeController::class,'downloadImage'])->name('download-image');
+Route::get('download-image', [HoomeController::class, 'downloadImage'])->name('download-image');
+
+/// người dùng
+Route::prefix('users')->group(function () {
+    Route::get('/', [UsersController::class, 'index']);
+});
