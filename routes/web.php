@@ -201,4 +201,6 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/edit/{id}', [UsersController::class, 'getEdit'])->name('edit');
     Route::post('/update', [UsersController::class, 'postEdit'])->name('postEdit');
 
+    Route::get('/delete/{id}', [UsersController::class, 'getDelete'])->name('delete');
+
 });

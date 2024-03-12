@@ -28,7 +28,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->ceate_at }}</td>
                         <td><a href="{{route('users.edit',['id'=>$item->id])}}" class="btn btn-warning btn-sm">Sửa</a></td>
-                        <td><a href="" class="btn btn-danger btn-sm">Xoa</a></td>
+                        <td><a onclick="return confirm('chắc chắc muốn xóa không?')" href="{{route('users.delete',['id'=>$item->id])}}" class="btn btn-danger btn-sm">Xoa</a></td>
                     </tr>
                 @endforeach
             @else
