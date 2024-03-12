@@ -16,9 +16,12 @@ class UsersController extends Controller
     }
     public function index()
     {
+        $satement= $this->users->statement('select* from  users');
+        dd($satement);
         $title = 'Danh sách người dùng';
         // $users= new Users();
         $usersList = $this->users->getAllUsers();
+
         return view('clients.users.lists', compact('title', 'usersList'));
     }
     public function add()
@@ -96,5 +99,25 @@ class UsersController extends Controller
         $this->users->updateUser($dataUpdate, $id);
     
         return back()->with('msg','cập nhập người dùng');
+    }
+    public function getDelete($id){
+        if (!empty($id)) {
+            $userDetail = $this->users->getDetail($id);
+            if (!empty($userDetail[0])) {
+                $deleteStatus=$this->users->deleteUser($id);
+                if($deleteStatus){
+                    $msg='xóa người dùng thành công';
+                }
+                else{
+                    $msg= ' bạn không thể xóa người dùng này ';
+                }
+            } else {
+                $msg= 'Người dùng không tồn tại';
+            }
+        } else {
+            $msg= 'Liên kết không tồn tại';
+
+        }
+        return redirect()->route('users.index')->with('msg', $msg);
     }
 }
