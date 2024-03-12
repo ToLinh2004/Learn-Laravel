@@ -12,7 +12,9 @@
                 <th width='5%'>STT</th>
                 <th>TÊN</th>
                 <th>EMAIL</th>
-                <th>THỜI GIAN</th>
+                <th width='15%'>THỜI GIAN</th>
+                <th width='5%'>Sửa</th>
+                <th width='5%'>Xóa</th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +27,13 @@
                         <td>{{ $item->fullname }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->ceate_at }}</td>
+                        <td><a href="{{route('users.edit',['id'=>$item->id])}}" class="btn btn-warning btn-sm">Sửa</a></td>
+                        <td><a href="" class="btn btn-danger btn-sm">Xoa</a></td>
                     </tr>
                 @endforeach
             @else
                 <tr>
-                    <td colspan="4">Không có người dùng</td>
+                    <td colspan="6">Không có người dùng</td>
                 </tr>
         </tbody>
         @endif
