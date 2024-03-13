@@ -31,12 +31,27 @@ class Users extends Model
     {
         $data[] = $id;
         return DB::update('UPDATE ' . $this->table . ' SET fullname=?, email=?, ceate_at=?  WHERE id=?', $data);
-
     }
-    public function deleteUser($id){
-        return DB::delete('DELETE FROM ' . $this->table.' where id=?',[$id]);
+    public function deleteUser($id)
+    {
+        return DB::delete('DELETE FROM ' . $this->table . ' where id=?', [$id]);
     }
-    public function statement($sql){
+    public function statement($sql)
+    {
         return DB::statement($sql);
+    }
+    public function learnQueryBuilder()
+    {
+        // lấy tất ả dữ liệu trong bảng
+        $lists=DB::table($this->table)
+        ->select('fullname','email')
+        ->where('id','>',1)
+        ->get();
+        dd($lists);
+
+        // lấy 1 bản ghi 
+        $detail=DB::table($this->table)->first();
+        dd($detail);
+
     }
 }

@@ -16,9 +16,10 @@ class UsersController extends Controller
     }
     public function index()
     {
-        $satement= $this->users->statement('select* from  users');
-        dd($satement);
+        //$satement= $this->users->statement('select* from  users');
+
         $title = 'Danh sách người dùng';
+        $this->users->learnQueryBuilder();
         // $users= new Users();
         $usersList = $this->users->getAllUsers();
 
