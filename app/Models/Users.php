@@ -42,12 +42,20 @@ class Users extends Model
     }
     public function learnQueryBuilder()
     {
+        DB::enableQueryLog();
         // lấy tất ả dữ liệu trong bảng
         $lists=DB::table($this->table)
-        ->select('fullname','email')
-        ->where('id','>',1)
+        ->select('fullname','email','id')
+        // ->where('id',1)
+        // ->where(function($query){
+        //     $query->where('id','<',2)->orwhere('id','>=',3);
+        // })
+        // ->where('fullname','like','%HOÀNG AN%')
+        // ->whereBetween('id',[2,3])
+        ->whereIn('id',[1,3])
         ->get();
-        dd($lists);
+        $sql=DB::getQueryLog();
+        dd($sql);
 
         // lấy 1 bản ghi 
         $detail=DB::table($this->table)->first();
