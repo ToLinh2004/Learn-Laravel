@@ -204,3 +204,4 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/delete/{id}', [UsersController::class, 'getDelete'])->name('delete');
 
 });
+    
