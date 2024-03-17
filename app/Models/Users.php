@@ -62,7 +62,7 @@ class Users extends Model
         // dd($detail);
 
         // join bảng inner join
-        $list=DB::table('users')
+        // $list=DB::table('users')
         // ->select('users.*','groups.name as group_name')
         // ->join('groups','users.group_id','=','group_id')
         // ->leftJoin()
@@ -72,10 +72,29 @@ class Users extends Model
         // ->select(DB::raw('count(id) as email_count'),'email')
         // ->groupBy('email')
         // ->having('email_count','>=','1')
-        ->limit(2)
-        ->offset(2) // nó sẽ phần tử thứ 2
-        ->get();
-        dd($list);
+        // ->limit(2)
+        // ->offset(2) // nó sẽ phần tử thứ 2
+        // ->get();
+        //inssert table
+        // $list=DB::table('users')->insert([
+        //     'fullname'=>'Nguyễn Văn A',
+        //     'email'=> 'nguyenvana@gmail.com',
+        //     'group_id'=>1,
+        //     'ceate_at'=>date('Y-m-d H:i:s')
+        // ]);
+        // $lastId=DB::getPdo()->lastInsertId();
+        //update
+        // $status=DB::table('users')
+        // ->where('id',8)
+        // ->update(['fullname'=>'Nguyễn Văn Linh',
+        // 'email'=>'nguyenvanlinh@gmail.com',
+        // 'ceate_at'=>date('Y-m-d H:i:s')]);
+        // $status=DB::table('users')
+        // ->where('id',7)
+        // ->delete();
+        $count=DB::table('users')->where('id','>',20)->count();
+        // ->where('id',7)
+        dd($count);
 
     }
 }
