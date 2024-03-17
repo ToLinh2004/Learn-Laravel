@@ -63,9 +63,17 @@ class Users extends Model
 
         // join bảng inner join
         $list=DB::table('users')
-        ->select('users.*','groups.name as group_name')
-        ->join('groups','users.group_id','=','group_id')
+        // ->select('users.*','groups.name as group_name')
+        // ->join('groups','users.group_id','=','group_id')
         // ->leftJoin()
+        // ->orderBy('id','desc')
+        // sắp xếp ngẫu nhiên
+        // ->inRandomOrder()
+        // ->select(DB::raw('count(id) as email_count'),'email')
+        // ->groupBy('email')
+        // ->having('email_count','>=','1')
+        ->limit(2)
+        ->offset(2) // nó sẽ phần tử thứ 2
         ->get();
         dd($list);
 
