@@ -42,24 +42,32 @@ class Users extends Model
     }
     public function learnQueryBuilder()
     {
-        DB::enableQueryLog();
+        // DB::enableQueryLog();
         // lấy tất ả dữ liệu trong bảng
-        $lists=DB::table($this->table)
-        ->select('fullname','email','id')
+        // $lists=DB::table($this->table)
+        // ->select('fullname','email','id')
         // ->where('id',1)
         // ->where(function($query){
         //     $query->where('id','<',2)->orwhere('id','>=',3);
         // })
         // ->where('fullname','like','%HOÀNG AN%')
         // ->whereBetween('id',[2,3])
-        ->whereIn('id',[1,3])
-        ->get();
-        $sql=DB::getQueryLog();
-        dd($sql);
-
+        // ->whereIn('id',[1,3])
+        // ->whereDate('ceate_at','2024-03-11 04:46:37')
+        // ->get();
+        // $sql=DB::getQueryLog();
+        // dd($sql);
         // lấy 1 bản ghi 
-        $detail=DB::table($this->table)->first();
-        dd($detail);
+        // $detail=DB::table($this->table)->first();
+        // dd($detail);
+
+        // join bảng inner join
+        $list=DB::table('users')
+        ->select('users.*','groups.name as group_name')
+        ->join('groups','users.group_id','=','group_id')
+        // ->leftJoin()
+        ->get();
+        dd($list);
 
     }
 }
