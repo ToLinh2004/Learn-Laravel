@@ -92,9 +92,30 @@ class Users extends Model
         // $status=DB::table('users')
         // ->where('id',7)
         // ->delete();
-        $count=DB::table('users')->where('id','>',20)->count();
+        // $count=DB::table('users')->where('id','>',20)->count();
         // ->where('id',7)
-        dd($count);
+        // dd($count);
+        // $lists= DB::table('users')
+        // ->select(
+        //     DB::raw('fullname, email')
+        // )
+        // ->groupBy('email')
+        // ->get();
+        // $sql= DB::getQueryLog();
+        $list = DB::table('users')
+        ->where(
+            'group_id',
+            '=',
+            function($query){
+                $query->select('id')
+                ->FROM('groups')
+                ->where('name','=','Adminstrator');
+            }
+        )
+        ->get();
+        $sql= DB::getQueryLog();
+
+        dd($sql);
 
     }
 }
